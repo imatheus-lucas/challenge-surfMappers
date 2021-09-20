@@ -5,7 +5,7 @@ export const Container = styled.ScrollView.attrs({
     showsHorizontalScrollIndicator: false
 })`
     height: 150px;
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
 `
 
 export const AddStory = styled.TouchableOpacity`

@@ -1,8 +1,14 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Home from '../screens/Home'
-import { Image } from 'react-native'
+import { Image, Text, TouchableOpacity, View } from 'react-native'
+
 import Album from '../screens/Album'
+import CartButton from '../components/Header/CartButton'
+import ChatButton from '../components/Header/ChatButton'
+import OptionsButton from '../components/Header/OptionsButton'
+import GoBackButton from '../components/Header/GoBackButton'
+import TabNavigator from './TabNavigator'
 
 const Stack = createNativeStackNavigator()
 export default function StackNavigator() {
@@ -18,17 +24,43 @@ export default function StackNavigator() {
                     headerLeft: () => (
                         <Image
                             source={require('../assets/logo.png')}
-                            style={{ width: 140, height: 45, marginLeft: 20 }}
+                            style={{ width: 140, height: 45 }}
                             resizeMode="cover"
                         />
                     ),
+                    headerRight: () => (
+                        <View style={{ flexDirection: 'row' }}>
+                            <CartButton />
+                            <ChatButton />
+                        </View>
+                    ),
+
+                    headerShadowVisible: false,
 
                     title: ''
                 }}
                 name="Home"
-                component={Home}
+                component={TabNavigator}
             />
-            <Stack.Screen name="Album" component={Album} />
+            <Stack.Screen
+                options={{
+                    headerShown: true,
+                    headerLeft: () => <GoBackButton title="Album" />,
+                    headerRight: () => (
+                        <View style={{ flexDirection: 'row' }}>
+                            <CartButton />
+                            <ChatButton />
+                            <OptionsButton />
+                        </View>
+                    ),
+
+                    headerShadowVisible: false,
+
+                    title: ''
+                }}
+                name="Album"
+                component={Album}
+            />
         </Stack.Navigator>
     )
 }

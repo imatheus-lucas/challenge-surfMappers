@@ -7,8 +7,7 @@ const Tabs = createBottomTabNavigator()
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Octicons from 'react-native-vector-icons/Octicons'
-import { Image } from 'react-native'
-import StackNavigator from './StackNavigator'
+
 const icons = {
     Stack: {
         lib: MaterialCommunityIcons,
@@ -40,14 +39,15 @@ export default function TabNavigator() {
                     const { lib: Icon, name } = icons[route.name]
                     return <Icon name={name} size={size} color={color} />
                 },
-
                 headerShown: false
             })}
         >
             <Tabs.Screen
                 name="Stack"
-                options={{ title: 'Home' }}
-                component={StackNavigator}
+                options={({ route }) => ({
+                    title: 'Home'
+                })}
+                component={Home}
             />
             <Tabs.Screen name="Explorer" component={Home} />
             <Tabs.Screen name="CheckIn" component={Home} />

@@ -7,7 +7,8 @@ import TabNavigator from './src/routes/TabNavigator'
 export default function App() {
     return (
         <NavigationContainer>
-            <TabNavigator />
+            <StackNavigator />
+
             <StatusBar barStyle="light-content" translucent />
         </NavigationContainer>
     )

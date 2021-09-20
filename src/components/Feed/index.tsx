@@ -19,7 +19,7 @@ const Feed = () => {
     const { navigate } = useNavigation()
     return (
         <Container>
-            <Content onPress={() => navigate<any>('Album')}>
+            <Content onPress={() => navigate('Album')}>
                 <Header>
                     <Wrapper>
                         <Title>
